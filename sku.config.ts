@@ -7,7 +7,6 @@ const skuConfig = {
   publicPath: '/path/to/public/assets/', // <-- Required for sku build output
   testRunner: 'vitest',
   bundler: 'vite',
-  port: 8080,
 } satisfies SkuConfig;
 
 export default skuConfig;
