@@ -8,7 +8,7 @@ const maskEmail = (email: string): string => {
   return `${firstChar}${maskedMiddle}${lastTwoChars}`;
 };
 
-const maskEmailsInHtml = (html: string): string => {
+export const maskLinksInHtml = (html: string): string => {
   const emailRegex = /(<a[^>]*href="mailto:([^"]+)"[^>]*>)([\s\S]*?)(<\/a>)/gi;
 
   return html.replace(
@@ -20,20 +20,3 @@ const maskEmailsInHtml = (html: string): string => {
     },
   );
 };
-
-const findFirstTextNode = (element: Element): Text | null => {
-  for (const node of element.childNodes) {
-    if (node.nodeType === Node.TEXT_NODE) {
-      return node as Text;
-    }
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      const found = findFirstTextNode(node as Element);
-      if (found) {
-        return found;
-      }
-    }
-  }
-  return null;
-};
-
-export { maskEmail, maskEmailsInHtml, findFirstTextNode };
