@@ -1,5 +1,10 @@
 import { type RefObject, useEffect, useState } from 'react';
 
+const sendTracking = () => {
+  // eslint-disable-next-line no-console
+  console.log('@@@@@@@@@@@@ tracking');
+};
+
 export function useClickToReveal(
   containerRef: RefObject<HTMLDivElement | null>,
   linkSelector: string | string[],
@@ -37,6 +42,7 @@ export function useClickToReveal(
           if (!revealed.has(identifier)) {
             e.preventDefault();
             setRevealed((prev) => new Set(prev).add(identifier));
+            sendTracking();
           }
         };
       });

@@ -1,10 +1,12 @@
+const MASK_CHAR = '●';
+
 const maskValue = (value: string): string => {
   if (!value || value.length <= 4) {
     return value;
   }
   const firstChar = value.charAt(0);
   const lastTwoChars = value.slice(-2);
-  const maskedMiddle = '*'.repeat(Math.max(3, value.length - 5));
+  const maskedMiddle = MASK_CHAR.repeat(Math.max(3, value.length - 5));
   return `${firstChar}${maskedMiddle}${lastTwoChars}`;
 };
 
